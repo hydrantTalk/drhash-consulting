@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dr.Hash Consulting — Institutional-Grade Financial Advisory</title>
-    <meta name="description" content="Dr.Hash Consulting provides institutional-grade financial advisory across cryptocurrency, US equities, quantitative trading, and AI-driven analytics. Founded by Wesley, OKX Top 10 trader and professional poker strategist.">
+    <meta name="description" content="Dr.Hash Consulting provides institutional-grade financial advisory across cryptocurrency, US equities, quantitative trading, and AI-driven analytics.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <style>
@@ -15,348 +15,208 @@
             --border: #1a1a28;
             --gold: #b8975a;
             --gold-light: #d4b577;
-            --gold-dim: rgba(184,151,90,0.08);
             --text: #e4e4ec;
             --text-secondary: #9898ad;
             --text-dim: #6a6a80;
+            --green: #2ecc71;
+            --red: #e74c3c;
         }
-
         * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg);
-            color: var(--text);
-            line-height: 1.7;
-            overflow-x: hidden;
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg); color: var(--text);
+            line-height: 1.7; overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* ── Navigation ── */
-        nav {
-            position: fixed; top: 0; width: 100%; z-index: 100;
-            background: rgba(8,8,12,0.92);
-            backdrop-filter: blur(24px);
-            border-bottom: 1px solid var(--border);
-        }
-        .nav-inner {
-            max-width: 1200px; margin: 0 auto;
-            display: flex; align-items: center; justify-content: space-between;
-            height: 68px; padding: 0 2.5rem;
-        }
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.35rem; font-weight: 600;
-            color: var(--gold);
-            text-decoration: none;
-            letter-spacing: -0.01em;
-        }
+        /* Canvas backgrounds */
+        .bg-canvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; overflow: hidden; z-index: 0; }
+        .bg-canvas svg { width: 100%; height: 100%; opacity: 0.06; }
+
+        /* Nav */
+        nav { position: fixed; top: 0; width: 100%; z-index: 100; background: rgba(8,8,12,0.92); backdrop-filter: blur(24px); border-bottom: 1px solid var(--border); }
+        .nav-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 68px; padding: 0 2.5rem; }
+        .logo { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 600; color: var(--gold); text-decoration: none; }
         .logo span { color: var(--text-secondary); font-family: 'Inter', sans-serif; font-weight: 400; font-size: 0.85rem; margin-left: 0.5rem; letter-spacing: 0.08em; text-transform: uppercase; }
         .nav-links { display: flex; gap: 2.5rem; align-items: center; }
-        .nav-links a {
-            color: var(--text-dim); text-decoration: none;
-            font-size: 0.82rem; font-weight: 500;
-            letter-spacing: 0.03em; text-transform: uppercase;
-            transition: color 0.3s;
-        }
+        .nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.82rem; font-weight: 500; letter-spacing: 0.03em; text-transform: uppercase; transition: color 0.3s; }
         .nav-links a:hover { color: var(--text); }
-        .nav-x {
-            display: flex; align-items: center; gap: 0.5rem;
-            border: 1px solid var(--border);
-            padding: 0.45rem 1.1rem; border-radius: 6px;
-            color: var(--text-secondary) !important;
-            text-transform: none !important;
-            font-size: 0.85rem !important;
-            transition: border-color 0.3s, color 0.3s;
-        }
+        .nav-x { display: flex; align-items: center; gap: 0.5rem; border: 1px solid var(--border); padding: 0.45rem 1.1rem; border-radius: 6px; color: var(--text-secondary) !important; text-transform: none !important; font-size: 0.85rem !important; transition: border-color 0.3s; }
         .nav-x:hover { border-color: var(--gold); color: var(--gold) !important; }
         .nav-x svg { width: 14px; height: 14px; fill: currentColor; }
 
-        /* ── Hero ── */
-        .hero {
-            min-height: 100vh;
-            display: flex; align-items: center;
-            padding: 10rem 2.5rem 6rem;
-            position: relative;
-        }
-        .hero::before {
-            content: '';
-            position: absolute; top: 0; left: 0; right: 0; bottom: 0;
-            background: radial-gradient(ellipse 60% 50% at 50% 35%, rgba(184,151,90,0.04) 0%, transparent 100%);
-            pointer-events: none;
-        }
-        .hero-inner {
-            max-width: 1200px; margin: 0 auto; width: 100%;
-            display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center;
-        }
-        .hero-left {}
-        .hero-overline {
-            font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em;
-            color: var(--gold); margin-bottom: 1.5rem; font-weight: 500;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 3.2rem; line-height: 1.15;
-            font-weight: 600; margin-bottom: 1.5rem;
-            letter-spacing: -0.02em;
-        }
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; padding: 10rem 2.5rem 6rem; position: relative; }
+        .hero-inner { max-width: 1200px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 1; }
+        .hero-overline { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 1.5rem; font-weight: 500; }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 3.2rem; line-height: 1.15; font-weight: 600; margin-bottom: 1.5rem; }
         .hero h1 em { font-style: italic; color: var(--gold); }
-        .hero-desc {
-            font-size: 1rem; color: var(--text-secondary);
-            max-width: 480px; margin-bottom: 2.5rem;
-            line-height: 1.8;
-        }
+        .hero-desc { font-size: 1rem; color: var(--text-secondary); max-width: 480px; margin-bottom: 2.5rem; line-height: 1.8; }
         .hero-actions { display: flex; gap: 1rem; align-items: center; }
-        .btn-gold {
-            display: inline-flex; align-items: center; gap: 0.6rem;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
-            color: #0a0a0f; padding: 0.75rem 1.8rem; border-radius: 6px;
-            text-decoration: none; font-weight: 600; font-size: 0.88rem;
-            letter-spacing: 0.02em;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
+        .btn-gold { display: inline-flex; align-items: center; gap: 0.6rem; background: linear-gradient(135deg, var(--gold), var(--gold-light)); color: #0a0a0f; padding: 0.75rem 1.8rem; border-radius: 6px; text-decoration: none; font-weight: 600; font-size: 0.88rem; transition: transform 0.2s, box-shadow 0.2s; }
         .btn-gold:hover { transform: translateY(-1px); box-shadow: 0 6px 24px rgba(184,151,90,0.25); }
         .btn-gold svg { width: 16px; height: 16px; fill: #0a0a0f; }
-        .btn-outline {
-            display: inline-flex; align-items: center;
-            border: 1px solid var(--border); color: var(--text-secondary);
-            padding: 0.75rem 1.8rem; border-radius: 6px;
-            text-decoration: none; font-weight: 500; font-size: 0.88rem;
-            transition: border-color 0.3s, color 0.3s;
-        }
+        .btn-outline { display: inline-flex; align-items: center; border: 1px solid var(--border); color: var(--text-secondary); padding: 0.75rem 1.8rem; border-radius: 6px; text-decoration: none; font-weight: 500; font-size: 0.88rem; transition: border-color 0.3s; }
         .btn-outline:hover { border-color: var(--gold); color: var(--text); }
 
-        .hero-right {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1px;
-            background: var(--border); border-radius: 12px; overflow: hidden;
+        /* Hero visual panel */
+        .hero-visual { position: relative; }
+        .trading-panel {
+            background: var(--surface); border: 1px solid var(--border);
+            border-radius: 12px; padding: 1.5rem; position: relative; overflow: hidden;
         }
-        .hero-stat {
-            background: var(--surface);
-            padding: 2rem 1.5rem;
+        .trading-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; }
+        .trading-pair { font-weight: 600; font-size: 1.1rem; }
+        .trading-price { font-size: 1.4rem; font-weight: 700; color: var(--green); }
+        .trading-change { font-size: 0.8rem; color: var(--green); }
+        .candlestick-chart { width: 100%; height: 180px; position: relative; }
+        .candle { position: absolute; bottom: 0; }
+        .candle-body { width: 8px; border-radius: 1px; position: absolute; }
+        .candle-wick { width: 1px; position: absolute; left: 3.5px; }
+        .candle-green .candle-body { background: var(--green); }
+        .candle-green .candle-wick { background: var(--green); }
+        .candle-red .candle-body { background: var(--red); }
+        .candle-red .candle-wick { background: var(--red); }
+
+        /* Floating icons */
+        .float-icons { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+        .float-icon {
+            position: absolute; font-size: 2rem; opacity: 0.08;
+            animation: floatUp 20s linear infinite;
         }
-        .hero-stat-value {
-            font-size: 1.8rem; font-weight: 700; color: var(--gold);
-            margin-bottom: 0.3rem; font-family: 'Playfair Display', serif;
-        }
-        .hero-stat-label {
-            font-size: 0.72rem; color: var(--text-dim);
-            text-transform: uppercase; letter-spacing: 0.1em;
+        @keyframes floatUp {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0.08; }
+            50% { opacity: 0.12; }
+            100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
         }
 
-        /* ── Divider ── */
-        .divider {
-            max-width: 1200px; margin: 0 auto;
-            height: 1px; background: var(--border);
-        }
-
-        /* ── Section base ── */
-        section { padding: 7rem 2.5rem; }
-        .container { max-width: 1100px; margin: 0 auto; }
-        .section-overline {
-            font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em;
-            color: var(--gold); margin-bottom: 0.75rem; font-weight: 500;
-        }
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem; margin-bottom: 1rem;
-            font-weight: 600; letter-spacing: -0.01em;
-        }
-        .section-desc {
-            color: var(--text-secondary); max-width: 560px;
-            margin-bottom: 3.5rem; font-size: 0.95rem;
-        }
-        .section-center { text-align: center; }
-        .section-center .section-desc { margin-left: auto; margin-right: auto; }
-
-        /* ── Services ── */
-        .services-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
+        /* Stats bar */
+        .stats-bar {
+            display: grid; grid-template-columns: repeat(4, 1fr);
             gap: 1px; background: var(--border);
             border-radius: 12px; overflow: hidden;
+            margin-top: -3rem; position: relative; z-index: 2;
+            max-width: 1100px; margin-left: auto; margin-right: auto;
         }
-        .service-card {
-            background: var(--surface);
-            padding: 2.5rem;
-            transition: background 0.3s;
+        .stat-item { background: var(--surface); padding: 2rem 1.5rem; text-align: center; }
+        .stat-value { font-size: 1.8rem; font-weight: 700; color: var(--gold); font-family: 'Playfair Display', serif; margin-bottom: 0.3rem; }
+        .stat-label { font-size: 0.72rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: 0.1em; }
+
+        /* Ticker tape */
+        .ticker-wrap {
+            overflow: hidden; background: var(--surface);
+            border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+            padding: 0.75rem 0;
         }
+        .ticker {
+            display: flex; gap: 3rem;
+            animation: ticker 30s linear infinite;
+            width: max-content;
+        }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .ticker-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.8rem; white-space: nowrap; }
+        .ticker-symbol { font-weight: 600; color: var(--text); }
+        .ticker-price { color: var(--text-secondary); }
+        .ticker-up { color: var(--green); }
+        .ticker-down { color: var(--red); }
+
+        /* Sections */
+        section { padding: 7rem 2.5rem; position: relative; }
+        .container { max-width: 1100px; margin: 0 auto; }
+        .section-overline { font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--gold); margin-bottom: 0.75rem; font-weight: 500; }
+        .section-title { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; font-weight: 600; }
+        .section-desc { color: var(--text-secondary); max-width: 560px; margin-bottom: 3.5rem; font-size: 0.95rem; }
+        .section-center { text-align: center; }
+        .section-center .section-desc { margin-left: auto; margin-right: auto; }
+        .divider { max-width: 1200px; margin: 0 auto; height: 1px; background: var(--border); }
+
+        /* Services */
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border-radius: 12px; overflow: hidden; }
+        .service-card { background: var(--surface); padding: 2.5rem; transition: background 0.3s; }
         .service-card:hover { background: var(--surface-2); }
-        .service-num {
-            font-size: 0.65rem; color: var(--text-dim);
-            letter-spacing: 0.15em; text-transform: uppercase;
-            margin-bottom: 1.25rem; font-weight: 500;
-        }
-        .service-card h3 {
-            font-size: 1.05rem; margin-bottom: 0.75rem;
-            font-weight: 600; letter-spacing: -0.01em;
-        }
+        .service-icon-wrap { width: 48px; height: 48px; display: flex; align-items: center; justify-content: center; margin-bottom: 1.25rem; border-radius: 10px; background: rgba(184,151,90,0.06); border: 1px solid rgba(184,151,90,0.1); }
+        .service-icon-wrap svg { width: 24px; height: 24px; stroke: var(--gold); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+        .service-num { font-size: 0.65rem; color: var(--text-dim); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem; font-weight: 500; }
+        .service-card h3 { font-size: 1.05rem; margin-bottom: 0.75rem; font-weight: 600; }
         .service-card p { font-size: 0.85rem; color: var(--text-secondary); line-height: 1.7; }
 
-        /* ── Verticals ── */
-        .verticals {
-            background: var(--surface);
-            border-top: 1px solid var(--border);
-            border-bottom: 1px solid var(--border);
+        /* Verticals with visual cards */
+        .verticals { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+        .verticals-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+        .vertical-card {
+            border: 1px solid var(--border); border-radius: 12px;
+            overflow: hidden; transition: border-color 0.3s, transform 0.3s;
         }
-        .verticals-grid {
-            display: grid; grid-template-columns: repeat(4, 1fr);
-            gap: 3rem;
+        .vertical-card:hover { border-color: rgba(184,151,90,0.3); transform: translateY(-4px); }
+        .vertical-visual {
+            height: 140px; position: relative; overflow: hidden;
+            background: var(--surface-2);
+            display: flex; align-items: center; justify-content: center;
         }
-        .vertical-item {}
-        .vertical-line {
-            width: 32px; height: 1px;
-            background: var(--gold); margin-bottom: 1.5rem;
+        .vertical-visual svg { width: 80%; height: 80%; opacity: 0.15; }
+        .vertical-visual-overlay {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            height: 60px;
+            background: linear-gradient(to top, var(--surface), transparent);
         }
-        .vertical-item h4 {
-            font-size: 0.95rem; margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
-        .vertical-item p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.75; }
+        .vertical-content { padding: 1.5rem; }
+        .vertical-content h4 { font-size: 0.95rem; margin-bottom: 0.75rem; font-weight: 600; }
+        .vertical-content p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.75; }
 
-        /* ── About / Team ── */
-        .about-layout {
-            display: grid; grid-template-columns: 380px 1fr;
-            gap: 5rem; align-items: start;
-        }
-        .founder-card {
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 2.5rem;
-            position: sticky; top: 100px;
-        }
-        .founder-initial {
-            width: 88px; height: 88px;
-            border-radius: 50%;
-            overflow: hidden;
-            margin-bottom: 1.5rem;
-            border: 2px solid var(--gold);
-        }
-        .founder-initial img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-        }
+        /* About */
+        .about-layout { display: grid; grid-template-columns: 380px 1fr; gap: 5rem; align-items: start; }
+        .founder-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 2.5rem; position: sticky; top: 100px; }
+        .founder-avatar { width: 88px; height: 88px; border-radius: 50%; overflow: hidden; margin-bottom: 1.5rem; border: 2px solid var(--gold); }
+        .founder-avatar img { width: 100%; height: 100%; object-fit: cover; }
         .founder-card h3 { font-size: 1.3rem; margin-bottom: 0.2rem; font-weight: 600; }
-        .founder-card .title { color: var(--gold); font-size: 0.82rem; margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.03em; }
-        .founder-credentials {
-            list-style: none; padding: 0;
-            border-top: 1px solid var(--border);
-            padding-top: 1.25rem;
-        }
-        .founder-credentials li {
-            font-size: 0.82rem; color: var(--text-secondary);
-            padding: 0.45rem 0;
-            display: flex; align-items: center; gap: 0.6rem;
-        }
-        .founder-credentials li::before {
-            content: '';
-            width: 4px; height: 4px; border-radius: 50%;
-            background: var(--gold); flex-shrink: 0;
-        }
-        .founder-x {
-            display: flex; align-items: center; gap: 0.5rem;
-            color: var(--text-secondary); text-decoration: none;
-            font-size: 0.85rem; margin-top: 1.5rem;
-            padding-top: 1.25rem; border-top: 1px solid var(--border);
-            transition: color 0.3s;
-        }
+        .founder-card .title { color: var(--gold); font-size: 0.82rem; margin-bottom: 1.5rem; font-weight: 500; }
+        .founder-credentials { list-style: none; padding: 0; border-top: 1px solid var(--border); padding-top: 1.25rem; }
+        .founder-credentials li { font-size: 0.82rem; color: var(--text-secondary); padding: 0.45rem 0; display: flex; align-items: center; gap: 0.6rem; }
+        .founder-credentials li::before { content: ''; width: 4px; height: 4px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+        .founder-x { display: flex; align-items: center; gap: 0.5rem; color: var(--text-secondary); text-decoration: none; font-size: 0.85rem; margin-top: 1.5rem; padding-top: 1.25rem; border-top: 1px solid var(--border); transition: color 0.3s; }
         .founder-x:hover { color: var(--gold); }
         .founder-x svg { width: 16px; height: 16px; fill: currentColor; }
-
-        .about-content {}
-        .about-content h3 {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem; margin-bottom: 1.25rem;
-            font-weight: 600;
-        }
-        .about-content p {
-            font-size: 0.92rem; color: var(--text-secondary);
-            margin-bottom: 1.25rem; line-height: 1.8;
-        }
-        .about-milestones {
-            margin-top: 2.5rem;
-            border-top: 1px solid var(--border);
-            padding-top: 2rem;
-        }
-        .about-milestones h4 {
-            font-size: 0.7rem; text-transform: uppercase;
-            letter-spacing: 0.15em; color: var(--text-dim);
-            margin-bottom: 1.5rem;
-        }
-        .milestone-grid {
-            display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem;
-        }
-        .milestone {
-            padding: 1.25rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 8px;
-        }
-        .milestone-year {
-            font-size: 0.7rem; color: var(--gold);
-            letter-spacing: 0.1em; margin-bottom: 0.4rem; font-weight: 600;
-        }
+        .about-content h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 1.25rem; font-weight: 600; }
+        .about-content p { font-size: 0.92rem; color: var(--text-secondary); margin-bottom: 1.25rem; line-height: 1.8; }
+        .about-milestones { margin-top: 2.5rem; border-top: 1px solid var(--border); padding-top: 2rem; }
+        .about-milestones h4 { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--text-dim); margin-bottom: 1.5rem; }
+        .milestone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; }
+        .milestone { padding: 1.25rem; background: var(--surface); border: 1px solid var(--border); border-radius: 8px; }
+        .milestone-year { font-size: 0.7rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 0.4rem; font-weight: 600; }
         .milestone p { font-size: 0.82rem; color: var(--text-secondary); margin: 0; }
 
-        /* ── Methodology ── */
-        .method-grid {
-            display: grid; grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-        .method-card {
-            padding: 2rem;
-            border: 1px solid var(--border);
-            border-radius: 10px;
-            transition: border-color 0.3s;
-        }
+        /* Methodology */
+        .method-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+        .method-card { padding: 2rem; border: 1px solid var(--border); border-radius: 10px; transition: border-color 0.3s; position: relative; overflow: hidden; }
         .method-card:hover { border-color: rgba(184,151,90,0.3); }
-        .method-card h4 {
-            font-size: 0.95rem; margin-bottom: 0.75rem;
-            font-weight: 600;
-        }
+        .method-card h4 { font-size: 0.95rem; margin-bottom: 0.75rem; font-weight: 600; }
         .method-card p { font-size: 0.82rem; color: var(--text-secondary); line-height: 1.75; }
+        .method-icon { width: 40px; height: 40px; margin-bottom: 1.25rem; display: flex; align-items: center; justify-content: center; }
+        .method-icon svg { width: 32px; height: 32px; stroke: var(--gold); fill: none; stroke-width: 1.5; opacity: 0.6; }
 
-        /* ── CTA ── */
-        .cta {
-            text-align: center;
-            background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(184,151,90,0.05) 0%, transparent 100%);
-        }
-        .cta h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem; margin-bottom: 1rem; font-weight: 600;
-        }
+        /* Partners */
+        .partners-strip { display: flex; justify-content: center; gap: 4rem; align-items: center; flex-wrap: wrap; padding: 2rem 0; }
+        .partner-logo { font-size: 1.1rem; font-weight: 600; color: var(--text-dim); opacity: 0.4; letter-spacing: 0.05em; transition: opacity 0.3s; }
+        .partner-logo:hover { opacity: 0.7; }
+
+        /* CTA */
+        .cta { text-align: center; background: radial-gradient(ellipse 50% 60% at 50% 50%, rgba(184,151,90,0.05) 0%, transparent 100%); }
+        .cta h2 { font-family: 'Playfair Display', serif; font-size: 2rem; margin-bottom: 1rem; font-weight: 600; }
         .cta p { color: var(--text-secondary); margin-bottom: 2.5rem; font-size: 0.95rem; }
         .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
 
-        /* ── Footer ── */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 3rem 2.5rem;
-        }
-        .footer-inner {
-            max-width: 1100px; margin: 0 auto;
-            display: flex; justify-content: space-between; align-items: start;
-        }
-        .footer-brand {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.1rem; color: var(--gold);
-            margin-bottom: 0.5rem;
-        }
+        /* Footer */
+        footer { border-top: 1px solid var(--border); padding: 3rem 2.5rem; }
+        .footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; align-items: start; }
+        .footer-brand { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--gold); margin-bottom: 0.5rem; }
         .footer-copy { font-size: 0.78rem; color: var(--text-dim); line-height: 1.6; }
         .footer-right { text-align: right; }
         .footer-links { display: flex; gap: 2rem; margin-bottom: 0.75rem; }
-        .footer-links a {
-            color: var(--text-dim); text-decoration: none;
-            font-size: 0.8rem; letter-spacing: 0.03em;
-            transition: color 0.3s;
-        }
+        .footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.8rem; transition: color 0.3s; }
         .footer-links a:hover { color: var(--gold); }
-        .footer-disclaimer {
-            font-size: 0.7rem; color: var(--text-dim);
-            max-width: 400px; line-height: 1.6;
-            opacity: 0.7;
-        }
+        .footer-disclaimer { font-size: 0.7rem; color: var(--text-dim); max-width: 400px; line-height: 1.6; opacity: 0.7; }
 
-        /* ── Responsive ── */
+        /* Responsive */
         @media (max-width: 1024px) {
             .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
             .hero h1 { font-size: 2.5rem; }
@@ -365,10 +225,9 @@
             .verticals-grid { grid-template-columns: 1fr 1fr; }
         }
         @media (max-width: 768px) {
-            .services-grid { grid-template-columns: 1fr; }
-            .method-grid { grid-template-columns: 1fr; }
+            .services-grid, .method-grid { grid-template-columns: 1fr; }
             .verticals-grid { grid-template-columns: 1fr; }
-            .hero-right { grid-template-columns: 1fr 1fr; }
+            .stats-bar { grid-template-columns: 1fr 1fr; }
             .milestone-grid { grid-template-columns: 1fr; }
             .nav-links a:not(.nav-x) { display: none; }
             .footer-inner { flex-direction: column; gap: 2rem; }
@@ -379,6 +238,22 @@
     </style>
 </head>
 <body>
+
+    <!-- Floating background elements -->
+    <div class="float-icons">
+        <div class="float-icon" style="left:5%;top:110%;animation-delay:0s;font-size:1.5rem">&#9824;</div>
+        <div class="float-icon" style="left:15%;top:130%;animation-delay:3s;font-size:2rem">&#8383;</div>
+        <div class="float-icon" style="left:25%;top:150%;animation-delay:7s;font-size:1.8rem">&#9830;</div>
+        <div class="float-icon" style="left:35%;top:120%;animation-delay:2s;font-size:1.4rem">&#36;</div>
+        <div class="float-icon" style="left:48%;top:140%;animation-delay:5s;font-size:2.2rem">&#9829;</div>
+        <div class="float-icon" style="left:58%;top:115%;animation-delay:8s;font-size:1.6rem">&#9827;</div>
+        <div class="float-icon" style="left:68%;top:135%;animation-delay:1s;font-size:2rem">&#8383;</div>
+        <div class="float-icon" style="left:78%;top:125%;animation-delay:4s;font-size:1.5rem">&#9824;</div>
+        <div class="float-icon" style="left:88%;top:145%;animation-delay:6s;font-size:1.8rem">&#36;</div>
+        <div class="float-icon" style="left:10%;top:160%;animation-delay:9s;font-size:2rem">&#9830;</div>
+        <div class="float-icon" style="left:40%;top:170%;animation-delay:11s;font-size:1.6rem">&#9829;</div>
+        <div class="float-icon" style="left:70%;top:155%;animation-delay:13s;font-size:2.2rem">&#8383;</div>
+    </div>
 
     <!-- Navigation -->
     <nav>
@@ -401,7 +276,7 @@
     <section class="hero">
         <div class="hero-inner">
             <div class="hero-left">
-                <div class="hero-overline">Est. 2021 &mdash; Financial Advisory &amp; Research</div>
+                <div class="hero-overline">Est. 2021 — Financial Advisory & Research</div>
                 <h1>Institutional-Grade <em>Financial Intelligence</em></h1>
                 <p class="hero-desc">Dr.Hash Consulting delivers proprietary market research, quantitative trading strategies, and strategic advisory across digital assets, US equities, and alternative investments. We combine algorithmic precision with deep market intuition.</p>
                 <div class="hero-actions">
@@ -412,96 +287,250 @@
                     <a href="#services" class="btn-outline">Our Services</a>
                 </div>
             </div>
-            <div class="hero-right">
-                <div class="hero-stat">
-                    <div class="hero-stat-value">6,500+</div>
-                    <div class="hero-stat-label">Active Clients</div>
+            <div class="hero-visual">
+                <!-- Live trading panel visualization -->
+                <div class="trading-panel">
+                    <div class="trading-header">
+                        <div>
+                            <div class="trading-pair">BTC / USDT</div>
+                            <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.2rem">Perpetual · 50x</div>
+                        </div>
+                        <div style="text-align:right">
+                            <div class="trading-price">$84,521.30</div>
+                            <div class="trading-change">+3.42%</div>
+                        </div>
+                    </div>
+                    <div class="candlestick-chart" id="chart"></div>
+                    <div style="display:flex;justify-content:space-between;margin-top:1rem;font-size:0.7rem;color:var(--text-dim)">
+                        <span>Vol 24h: $48.2B</span>
+                        <span>OI: $18.7B</span>
+                        <span>Funding: 0.012%</span>
+                    </div>
                 </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-value">650+</div>
-                    <div class="hero-stat-label">Research Reports</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-value">$300M</div>
-                    <div class="hero-stat-label">Fund Scale</div>
-                </div>
-                <div class="hero-stat">
-                    <div class="hero-stat-value">5+</div>
-                    <div class="hero-stat-label">Years Operating</div>
+                <!-- Mini cards below chart -->
+                <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0.75rem;margin-top:0.75rem">
+                    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+                        <div style="font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem">S&P 500</div>
+                        <div style="font-size:1rem;font-weight:600;color:var(--green)">5,842</div>
+                        <div style="font-size:0.7rem;color:var(--green)">+0.87%</div>
+                    </div>
+                    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+                        <div style="font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem">ETH/USD</div>
+                        <div style="font-size:1rem;font-weight:600;color:var(--green)">$3,241</div>
+                        <div style="font-size:0.7rem;color:var(--green)">+2.15%</div>
+                    </div>
+                    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:1rem;text-align:center">
+                        <div style="font-size:0.65rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.4rem">AI Index</div>
+                        <div style="font-size:1rem;font-weight:600;color:var(--green)">2,187</div>
+                        <div style="font-size:0.7rem;color:var(--green)">+1.63%</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="divider"></div>
+    <!-- Ticker tape -->
+    <div class="ticker-wrap">
+        <div class="ticker">
+            <div class="ticker-item"><span class="ticker-symbol">BTC</span> <span class="ticker-price">$84,521</span> <span class="ticker-up">+3.42%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">ETH</span> <span class="ticker-price">$3,241</span> <span class="ticker-up">+2.15%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">SOL</span> <span class="ticker-price">$186.40</span> <span class="ticker-up">+5.21%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">NVDA</span> <span class="ticker-price">$891.20</span> <span class="ticker-up">+1.83%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">AAPL</span> <span class="ticker-price">$182.50</span> <span class="ticker-down">-0.42%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">TSLA</span> <span class="ticker-price">$248.60</span> <span class="ticker-up">+2.91%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">SPY</span> <span class="ticker-price">$584.20</span> <span class="ticker-up">+0.87%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">DXY</span> <span class="ticker-price">103.42</span> <span class="ticker-down">-0.31%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">DOGE</span> <span class="ticker-price">$0.182</span> <span class="ticker-up">+4.56%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">MSFT</span> <span class="ticker-price">$415.80</span> <span class="ticker-up">+0.62%</span></div>
+            <!-- Duplicate for seamless scroll -->
+            <div class="ticker-item"><span class="ticker-symbol">BTC</span> <span class="ticker-price">$84,521</span> <span class="ticker-up">+3.42%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">ETH</span> <span class="ticker-price">$3,241</span> <span class="ticker-up">+2.15%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">SOL</span> <span class="ticker-price">$186.40</span> <span class="ticker-up">+5.21%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">NVDA</span> <span class="ticker-price">$891.20</span> <span class="ticker-up">+1.83%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">AAPL</span> <span class="ticker-price">$182.50</span> <span class="ticker-down">-0.42%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">TSLA</span> <span class="ticker-price">$248.60</span> <span class="ticker-up">+2.91%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">SPY</span> <span class="ticker-price">$584.20</span> <span class="ticker-up">+0.87%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">DXY</span> <span class="ticker-price">103.42</span> <span class="ticker-down">-0.31%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">DOGE</span> <span class="ticker-price">$0.182</span> <span class="ticker-up">+4.56%</span></div>
+            <div class="ticker-item"><span class="ticker-symbol">MSFT</span> <span class="ticker-price">$415.80</span> <span class="ticker-up">+0.62%</span></div>
+        </div>
+    </div>
+
+    <!-- Stats -->
+    <div style="padding: 5rem 2.5rem 2rem">
+        <div class="stats-bar">
+            <div class="stat-item">
+                <div class="stat-value">6,500+</div>
+                <div class="stat-label">Active Clients</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">650+</div>
+                <div class="stat-label">Research Reports</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">$300M</div>
+                <div class="stat-label">Fund Scale</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">5+</div>
+                <div class="stat-label">Years Operating</div>
+            </div>
+        </div>
+    </div>
 
     <!-- Services -->
     <section id="services">
         <div class="container">
             <div class="section-overline">Services</div>
             <h2 class="section-title">What We Do</h2>
-            <p class="section-desc">End-to-end financial advisory spanning research, execution, and risk management. Every engagement is tailored to the client's risk profile and investment horizon.</p>
+            <p class="section-desc">End-to-end financial advisory spanning research, execution, and risk management across crypto and traditional markets.</p>
             <div class="services-grid">
                 <div class="service-card">
-                    <div class="service-num">01 &mdash; Research</div>
+                    <div class="service-icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-2-2-4 4"/></svg>
+                    </div>
+                    <div class="service-num">01 — Research</div>
                     <h3>Market Intelligence & Analytics</h3>
-                    <p>Proprietary research combining on-chain data analysis, order flow modeling, and macroeconomic indicators. We publish over 50 in-depth reports monthly covering market structure, sentiment shifts, and emerging narratives across crypto and traditional markets.</p>
+                    <p>Proprietary research combining on-chain data analysis, order flow modeling, and macroeconomic indicators. Over 50 in-depth reports monthly covering market structure, sentiment shifts, and emerging narratives across crypto and traditional markets.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-num">02 &mdash; Advisory</div>
+                    <div class="service-icon-wrap">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                    </div>
+                    <div class="service-num">02 — Advisory</div>
                     <h3>Portfolio Strategy & Construction</h3>
-                    <p>Bespoke portfolio advisory for high-net-worth individuals and family offices. Our models integrate cross-asset correlation analysis, volatility forecasting, and dynamic rebalancing strategies optimized for risk-adjusted returns.</p>
+                    <p>Bespoke portfolio advisory for high-net-worth individuals and family offices. Cross-asset correlation analysis, volatility forecasting, and dynamic rebalancing strategies optimized for risk-adjusted returns across crypto and equities.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-num">03 &mdash; Trading</div>
+                    <div class="service-icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M2 20h20"/><path d="M5 20V9l3-3 4 4 4-8 4 4v14"/></svg>
+                    </div>
+                    <div class="service-num">03 — Trading</div>
                     <h3>Quantitative Trading Signals</h3>
-                    <p>Real-time trading signals across spot, derivatives, and options markets. Our quantitative models leverage statistical arbitrage, momentum factors, and market microstructure analysis with documented track records on OKX, Binance, and traditional brokerages.</p>
+                    <p>Real-time trading signals across spot, derivatives, and options. Quantitative models leverage statistical arbitrage, momentum factors, and market microstructure analysis with documented track records on OKX, Binance, and US brokerages.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-num">04 &mdash; Due Diligence</div>
+                    <div class="service-icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14,2 14,8 20,8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+                    </div>
+                    <div class="service-num">04 — Due Diligence</div>
                     <h3>Project & Token Evaluation</h3>
-                    <p>Comprehensive due diligence frameworks for token investments, including tokenomics modeling, team background verification, smart contract audit review, and competitive landscape mapping. Over 200 projects evaluated to date.</p>
+                    <p>Comprehensive due diligence including tokenomics modeling, team background verification, smart contract audit review, and competitive landscape mapping. Over 200 projects evaluated with institutional-grade methodology.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-num">05 &mdash; Education</div>
+                    <div class="service-icon-wrap">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                    </div>
+                    <div class="service-num">05 — Education</div>
                     <h3>Investor Education & Training</h3>
                     <p>Structured educational programs covering technical analysis, risk management, derivatives trading, and blockchain fundamentals. Regular live sessions, workshops, and one-on-one mentoring for serious traders and investors.</p>
                 </div>
                 <div class="service-card">
-                    <div class="service-num">06 &mdash; Institutional</div>
+                    <div class="service-icon-wrap">
+                        <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                    </div>
+                    <div class="service-num">06 — Institutional</div>
                     <h3>Strategic Partnerships</h3>
-                    <p>Advisory services for exchanges, blockchain projects, and investment funds. We provide market-making consultation, listing strategy, community growth frameworks, and investor relations management with our network of 70+ institutional partners.</p>
+                    <p>Advisory for exchanges, blockchain projects, and investment funds. Market-making consultation, listing strategy, community growth frameworks, and investor relations management across our network of 70+ institutional partners.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Verticals -->
+    <!-- Business Verticals -->
     <section class="verticals" id="verticals">
         <div class="container">
             <div class="section-overline">Business Verticals</div>
             <h2 class="section-title">Multi-Asset, Multi-Strategy</h2>
-            <p class="section-desc">Our expertise spans four interconnected verticals, each reinforcing the others through shared analytical frameworks and risk models.</p>
+            <p class="section-desc">Four interconnected verticals, each reinforcing the others through shared analytical frameworks and risk models.</p>
             <div class="verticals-grid">
-                <div class="vertical-item">
-                    <div class="vertical-line"></div>
-                    <h4>Digital Assets</h4>
-                    <p>Full-spectrum cryptocurrency advisory covering Bitcoin, Ethereum, DeFi protocols, Layer 2 ecosystems, and emerging chains. Deep expertise in on-chain analytics, whale tracking, smart money flow analysis, and cross-chain arbitrage opportunities. Active coverage of 200+ tokens with proprietary scoring models.</p>
+                <div class="vertical-card">
+                    <div class="vertical-visual">
+                        <!-- Bitcoin / Crypto visual -->
+                        <svg viewBox="0 0 200 140">
+                            <text x="100" y="60" text-anchor="middle" font-size="48" fill="#b8975a" font-weight="700">&#8383;</text>
+                            <text x="60" y="100" font-size="14" fill="#b8975a" opacity="0.5">ETH</text>
+                            <text x="120" y="105" font-size="12" fill="#b8975a" opacity="0.4">SOL</text>
+                            <text x="40" y="80" font-size="10" fill="#b8975a" opacity="0.3">DOGE</text>
+                            <text x="150" y="85" font-size="11" fill="#b8975a" opacity="0.35">AVAX</text>
+                            <circle cx="100" cy="55" r="35" fill="none" stroke="#b8975a" stroke-width="0.5" opacity="0.3"/>
+                            <circle cx="100" cy="55" r="50" fill="none" stroke="#b8975a" stroke-width="0.3" opacity="0.2"/>
+                        </svg>
+                        <div class="vertical-visual-overlay"></div>
+                    </div>
+                    <div class="vertical-content">
+                        <h4>Digital Assets</h4>
+                        <p>Full-spectrum cryptocurrency advisory covering Bitcoin, Ethereum, DeFi protocols, Layer 2 ecosystems, and emerging chains. Deep expertise in on-chain analytics, whale tracking, smart money flow analysis, and cross-chain arbitrage.</p>
+                    </div>
                 </div>
-                <div class="vertical-item">
-                    <div class="vertical-line"></div>
-                    <h4>US Equities & Macro</h4>
-                    <p>Cross-market analysis connecting traditional equities with digital asset flows. Coverage of tech stocks, semiconductor sector, AI-related equities, and macro indicators that drive crypto-equity correlations. Options strategy design for hedging digital asset exposure against traditional market risk.</p>
+                <div class="vertical-card">
+                    <div class="vertical-visual">
+                        <!-- US Equities / Dollar visual -->
+                        <svg viewBox="0 0 200 140">
+                            <text x="100" y="55" text-anchor="middle" font-size="52" fill="#b8975a" font-weight="300">$</text>
+                            <text x="50" y="100" font-size="10" fill="#b8975a" opacity="0.4">NVDA</text>
+                            <text x="100" y="110" font-size="10" fill="#b8975a" opacity="0.35">AAPL</text>
+                            <text x="145" y="100" font-size="10" fill="#b8975a" opacity="0.4">TSLA</text>
+                            <text x="70" y="120" font-size="9" fill="#b8975a" opacity="0.3">MSFT</text>
+                            <text x="130" y="118" font-size="9" fill="#b8975a" opacity="0.3">SPY</text>
+                            <line x1="20" y1="90" x2="40" y2="70" stroke="#b8975a" stroke-width="0.5" opacity="0.3"/>
+                            <line x1="40" y1="70" x2="70" y2="80" stroke="#b8975a" stroke-width="0.5" opacity="0.3"/>
+                            <line x1="70" y1="80" x2="100" y2="60" stroke="#b8975a" stroke-width="0.5" opacity="0.3"/>
+                            <line x1="100" y1="60" x2="130" y2="65" stroke="#b8975a" stroke-width="0.5" opacity="0.3"/>
+                            <line x1="130" y1="65" x2="180" y2="40" stroke="#b8975a" stroke-width="0.5" opacity="0.3"/>
+                        </svg>
+                        <div class="vertical-visual-overlay"></div>
+                    </div>
+                    <div class="vertical-content">
+                        <h4>US Equities & Macro</h4>
+                        <p>Cross-market analysis connecting traditional equities with digital asset flows. Coverage of tech stocks, semiconductors, AI equities, and macro indicators driving crypto-equity correlations. Options strategy design for hedging.</p>
+                    </div>
                 </div>
-                <div class="vertical-item">
-                    <div class="vertical-line"></div>
-                    <h4>Quantitative & Game Theory</h4>
-                    <p>Rooted in our founder's professional poker background — rigorous probability assessment, expected value calculation, and bankroll management applied to financial markets. Tournament-tested decision frameworks for position sizing, bluff detection in market manipulation, and optimal play under uncertainty.</p>
+                <div class="vertical-card">
+                    <div class="vertical-visual">
+                        <!-- Poker / Game Theory visual -->
+                        <svg viewBox="0 0 200 140">
+                            <text x="55" y="70" text-anchor="middle" font-size="42" fill="#b8975a">&#9824;</text>
+                            <text x="100" y="55" text-anchor="middle" font-size="36" fill="#b8975a" opacity="0.7">&#9829;</text>
+                            <text x="145" y="70" text-anchor="middle" font-size="42" fill="#b8975a">&#9830;</text>
+                            <text x="100" y="95" text-anchor="middle" font-size="36" fill="#b8975a" opacity="0.7">&#9827;</text>
+                            <text x="70" y="125" font-size="11" fill="#b8975a" opacity="0.35">EV+</text>
+                            <text x="115" y="125" font-size="11" fill="#b8975a" opacity="0.35">GTO</text>
+                            <rect x="30" y="25" width="30" height="42" rx="3" fill="none" stroke="#b8975a" stroke-width="0.5" opacity="0.25" transform="rotate(-10 45 46)"/>
+                            <rect x="140" y="25" width="30" height="42" rx="3" fill="none" stroke="#b8975a" stroke-width="0.5" opacity="0.25" transform="rotate(10 155 46)"/>
+                        </svg>
+                        <div class="vertical-visual-overlay"></div>
+                    </div>
+                    <div class="vertical-content">
+                        <h4>Quantitative & Game Theory</h4>
+                        <p>Rooted in professional poker — rigorous probability assessment, expected value calculation, and bankroll management applied to markets. Tournament-tested decision frameworks for position sizing and optimal play under uncertainty.</p>
+                    </div>
                 </div>
-                <div class="vertical-item">
-                    <div class="vertical-line"></div>
-                    <h4>AI & Data Intelligence</h4>
-                    <p>Leveraging machine learning for sentiment analysis, pattern recognition, and predictive modeling. Our AI systems process real-time social media signals, news feeds, and on-chain data to generate alpha signals. Custom LLM-powered research assistants for accelerated due diligence and market scanning.</p>
+                <div class="vertical-card">
+                    <div class="vertical-visual">
+                        <!-- AI / Robot visual -->
+                        <svg viewBox="0 0 200 140">
+                            <rect x="75" y="30" width="50" height="45" rx="8" fill="none" stroke="#b8975a" stroke-width="1" opacity="0.5"/>
+                            <circle cx="90" cy="50" r="5" fill="#b8975a" opacity="0.4"/>
+                            <circle cx="110" cy="50" r="5" fill="#b8975a" opacity="0.4"/>
+                            <line x1="88" y1="65" x2="112" y2="65" stroke="#b8975a" stroke-width="1" opacity="0.4"/>
+                            <line x1="100" y1="30" x2="100" y2="18" stroke="#b8975a" stroke-width="1" opacity="0.4"/>
+                            <circle cx="100" cy="15" r="3" fill="#b8975a" opacity="0.4"/>
+                            <rect x="80" y="80" width="40" height="30" rx="4" fill="none" stroke="#b8975a" stroke-width="0.8" opacity="0.35"/>
+                            <line x1="75" y1="75" x2="85" y2="80" stroke="#b8975a" stroke-width="0.8" opacity="0.35"/>
+                            <line x1="125" y1="75" x2="115" y2="80" stroke="#b8975a" stroke-width="0.8" opacity="0.35"/>
+                            <text x="60" y="125" font-size="8" fill="#b8975a" opacity="0.3">NEURAL NET</text>
+                            <text x="115" y="125" font-size="8" fill="#b8975a" opacity="0.3">LLM</text>
+                            <!-- Data flow lines -->
+                            <line x1="30" y1="50" x2="70" y2="50" stroke="#b8975a" stroke-width="0.3" opacity="0.2" stroke-dasharray="3,3"/>
+                            <line x1="130" y1="50" x2="170" y2="50" stroke="#b8975a" stroke-width="0.3" opacity="0.2" stroke-dasharray="3,3"/>
+                        </svg>
+                        <div class="vertical-visual-overlay"></div>
+                    </div>
+                    <div class="vertical-content">
+                        <h4>AI & Data Intelligence</h4>
+                        <p>Machine learning for sentiment analysis, pattern recognition, and predictive modeling. AI systems process real-time social signals, news feeds, and on-chain data. Custom LLM-powered research assistants for accelerated due diligence.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -512,7 +541,7 @@
         <div class="container">
             <div class="about-layout">
                 <div class="founder-card">
-                    <div class="founder-initial"><img src="avatar.jpg" alt="Wesley"></div>
+                    <div class="founder-avatar"><img src="avatar.jpg" alt="Wesley"></div>
                     <h3>Wesley</h3>
                     <div class="title">Founder & Chief Investment Officer</div>
                     <ul class="founder-credentials">
@@ -533,8 +562,7 @@
                     <h3>Where Discipline Meets Conviction</h3>
                     <p>Dr.Hash Consulting was founded in 2021 with a singular thesis: the best financial decisions emerge at the intersection of quantitative rigor and deep market intuition. What began as a research-focused crypto advisory has evolved into a multi-vertical financial intelligence firm serving clients across Asia, North America, and Europe.</p>
                     <p>Our founder Wesley brings an unusual combination of skills — a professional poker career that instilled discipline in probabilistic thinking and bankroll management, combined with a quantitative trading background that demands systematic execution. This dual lens shapes every aspect of our advisory practice.</p>
-                    <p>We don't chase narratives. We build models, test hypotheses, and let data guide our convictions. When we're wrong, we cut fast. When we're right, we size appropriately. This philosophy has sustained us through multiple market cycles and earned the trust of thousands of clients who share our commitment to disciplined investing.</p>
-
+                    <p>We don't chase narratives. We build models, test hypotheses, and let data guide our convictions. When we're wrong, we cut fast. When we're right, we size appropriately. This philosophy has sustained us through multiple market cycles and earned the trust of thousands of clients.</p>
                     <div class="about-milestones">
                         <h4>Key Milestones</h4>
                         <div class="milestone-grid">
@@ -548,7 +576,7 @@
                             </div>
                             <div class="milestone">
                                 <div class="milestone-year">2023</div>
-                                <p>Expanded to US equities coverage. AI-driven analytics platform deployed. 40+ institutional partnerships secured</p>
+                                <p>Expanded to US equities and AI analytics. 40+ institutional partnerships secured</p>
                             </div>
                             <div class="milestone">
                                 <div class="milestone-year">2025</div>
@@ -569,21 +597,48 @@
             <div class="section-center">
                 <div class="section-overline">Our Approach</div>
                 <h2 class="section-title">Principles Over Predictions</h2>
-                <p class="section-desc">Markets reward process, not prophecy. Our methodology is built on three pillars that have proven resilient across bull and bear cycles.</p>
+                <p class="section-desc">Markets reward process, not prophecy. Our methodology is built on three pillars proven resilient across bull and bear cycles.</p>
             </div>
             <div class="method-grid">
                 <div class="method-card">
+                    <div class="method-icon">
+                        <svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 16l4-8 4 4 4-8"/></svg>
+                    </div>
                     <h4>Quantitative Foundation</h4>
-                    <p>Every thesis starts with data. We maintain proprietary databases covering on-chain metrics, exchange flows, derivatives positioning, social sentiment, and macroeconomic indicators. Our models are backtested across multiple market regimes before deployment. We believe in quantifiable edges, not stories.</p>
+                    <p>Every thesis starts with data. Proprietary databases covering on-chain metrics, exchange flows, derivatives positioning, social sentiment, and macroeconomic indicators. Models are backtested across multiple market regimes before deployment.</p>
                 </div>
                 <div class="method-card">
+                    <div class="method-icon">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    </div>
                     <h4>Risk-First Architecture</h4>
-                    <p>Position sizing, correlation management, and downside protection are not afterthoughts — they are the foundation of every recommendation. Drawing from professional poker's bankroll management principles, we never risk more than the edge justifies. Capital preservation enables compounding.</p>
+                    <p>Position sizing, correlation management, and downside protection are the foundation. Drawing from poker's bankroll management — never risk more than the edge justifies. Capital preservation enables compounding.</p>
                 </div>
                 <div class="method-card">
+                    <div class="method-icon">
+                        <svg viewBox="0 0 24 24"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    </div>
                     <h4>Transparent Execution</h4>
-                    <p>All advisory positions are documented with entry rationale, risk parameters, and exit criteria. We publish regular performance attribution reports. Our clients never wonder why a position was taken or when it should be exited. Accountability builds trust; trust enables long-term partnerships.</p>
+                    <p>All positions documented with entry rationale, risk parameters, and exit criteria. Regular performance attribution reports. Accountability builds trust; trust enables long-term partnerships.</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section style="padding: 4rem 2.5rem; border-top: 1px solid var(--border);">
+        <div class="container">
+            <div class="section-center" style="margin-bottom: 2rem;">
+                <div class="section-overline">Trusted By</div>
+            </div>
+            <div class="partners-strip">
+                <div class="partner-logo">OKX</div>
+                <div class="partner-logo">Binance</div>
+                <div class="partner-logo">Bybit</div>
+                <div class="partner-logo">Bitget</div>
+                <div class="partner-logo">Gate.io</div>
+                <div class="partner-logo">MEXC</div>
+                <div class="partner-logo">KuCoin</div>
             </div>
         </div>
     </section>
@@ -592,7 +647,7 @@
     <section class="cta">
         <div class="container">
             <h2>Start the Conversation</h2>
-            <p>Whether you're an individual investor or an institution, we're here to provide clarity in complex markets.</p>
+            <p>Whether you're an individual investor or an institution, we provide clarity in complex markets.</p>
             <div class="cta-actions">
                 <a href="https://x.com/CryptoApprenti1" target="_blank" rel="noopener" class="btn-gold">
                     <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
@@ -616,14 +671,57 @@
                     <a href="https://x.com/DrHashClub" target="_blank" rel="noopener">Community</a>
                     <a href="mailto:contact@drhash.io">Contact</a>
                 </div>
-                <div class="footer-disclaimer">
-                    This website is for informational purposes only and does not constitute financial advice. Past performance is not indicative of future results. Cryptocurrency and equity investments carry significant risk.
-                </div>
+                <div class="footer-disclaimer">This website is for informational purposes only and does not constitute financial advice. Past performance is not indicative of future results. Cryptocurrency and equity investments carry significant risk.</div>
             </div>
         </div>
     </footer>
 
     <script>
+        // Generate candlestick chart
+        (function() {
+            const chart = document.getElementById('chart');
+            if (!chart) return;
+            const candles = 28;
+            let price = 82000;
+            for (let i = 0; i < candles; i++) {
+                const change = (Math.random() - 0.45) * 1200;
+                const open = price;
+                const close = price + change;
+                const high = Math.max(open, close) + Math.random() * 600;
+                const low = Math.min(open, close) - Math.random() * 600;
+                price = close;
+
+                const isGreen = close > open;
+                const maxPrice = 86000, minPrice = 78000;
+                const range = maxPrice - minPrice;
+                const h = chart.offsetHeight || 180;
+
+                const bodyTop = h - ((Math.max(open, close) - minPrice) / range * h);
+                const bodyBottom = h - ((Math.min(open, close) - minPrice) / range * h);
+                const wickTop = h - ((high - minPrice) / range * h);
+                const wickBottom = h - ((low - minPrice) / range * h);
+
+                const el = document.createElement('div');
+                el.className = 'candle ' + (isGreen ? 'candle-green' : 'candle-red');
+                el.style.left = (i * (100 / candles)) + '%';
+
+                const body = document.createElement('div');
+                body.className = 'candle-body';
+                body.style.top = bodyTop + 'px';
+                body.style.height = Math.max(2, bodyBottom - bodyTop) + 'px';
+
+                const wick = document.createElement('div');
+                wick.className = 'candle-wick';
+                wick.style.top = wickTop + 'px';
+                wick.style.height = (wickBottom - wickTop) + 'px';
+
+                el.appendChild(wick);
+                el.appendChild(body);
+                chart.appendChild(el);
+            }
+        })();
+
+        // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(a => {
             a.addEventListener('click', e => {
                 e.preventDefault();

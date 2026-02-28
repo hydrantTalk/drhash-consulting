@@ -225,13 +225,15 @@
             position: sticky; top: 100px;
         }
         .founder-initial {
-            width: 72px; height: 72px;
-            background: linear-gradient(135deg, var(--gold), var(--gold-light));
+            width: 88px; height: 88px;
             border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            font-size: 1.6rem; font-weight: 700; color: #0a0a0f;
-            font-family: 'Playfair Display', serif;
+            overflow: hidden;
             margin-bottom: 1.5rem;
+            border: 2px solid var(--gold);
+        }
+        .founder-initial img {
+            width: 100%; height: 100%;
+            object-fit: cover;
         }
         .founder-card h3 { font-size: 1.3rem; margin-bottom: 0.2rem; font-weight: 600; }
         .founder-card .title { color: var(--gold); font-size: 0.82rem; margin-bottom: 1.5rem; font-weight: 500; letter-spacing: 0.03em; }
@@ -510,7 +512,7 @@
         <div class="container">
             <div class="about-layout">
                 <div class="founder-card">
-                    <div class="founder-initial">W</div>
+                    <div class="founder-initial"><img src="avatar.jpg" alt="Wesley"></div>
                     <h3>Wesley</h3>
                     <div class="title">Founder & Chief Investment Officer</div>
                     <ul class="founder-credentials">
